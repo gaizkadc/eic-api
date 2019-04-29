@@ -23,10 +23,26 @@ spec:
         cluster: management
         component: eic-api
     spec:
+      volumes:
+      - name: authx-config
+        configMap:
+          name: eic-api-authx-config
       containers:
       - name: eic-api
         image: __NPH_REGISTRY.azurecr.io/__NPH_REGISTRY_NAMESPACE/eic-api:__NPH_VERSION
         imagePullPolicy: Always
+        volumeMounts:
+        - name: authx-config
+          mountPath: "/nalej/config"
+          readOnly: true
+        args:
+        - "run"
+        - "--debug"
+        - "--inventoryManagerAddress=inventory-manager.__NPH_NAMESPACE:5510"
+        - "--authHeader=authorization"
+        - "--authSecret=$(AUTH_SECRET)"
+        - "--authConfigPath=/nalej/config/authx-config.json"
+        - "--authxAddress=authx.__NPH_NAMESPACE:8810"
         securityContext:
           runAsUser: 2000
       imagePullSecrets:

@@ -10,7 +10,9 @@ import (
 	interceptorConfig "github.com/nalej/authx-interceptors/pkg/interceptor/config"
 	"github.com/nalej/derrors"
 	"github.com/nalej/eic-api/internal/pkg/config"
+	"github.com/nalej/eic-api/internal/pkg/server/api"
 	"github.com/nalej/grpc-authx-go"
+	"github.com/nalej/grpc-eic-api-go"
 	"github.com/nalej/grpc-inventory-manager-go"
 	"github.com/rs/zerolog/log"
 	"google.golang.org/grpc"
@@ -76,8 +78,11 @@ func (s *Service) Run() error {
 	apiKeyAccess := NewAuthxAPIAccess(clients.authxClient)
 
 	// Create handlers
+	manager := api.NewManager(clients.imClient)
+	handler := api.NewHandler(manager)
 	grpcServer := grpc.NewServer(apikey.WithAPIKeyInterceptor(apiKeyAccess,
 		interceptorConfig.NewConfig(authConfig, "not-used", s.Configuration.AuthHeader)))
+	grpc_eic_api_go.RegisterEICServer(grpcServer, handler)
 
 	if s.Configuration.Debug{
 		log.Info().Msg("Enabling gRPC server reflection")
