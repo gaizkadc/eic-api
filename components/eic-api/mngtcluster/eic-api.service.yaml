@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: eic-api
+  labels:
+    cluster: management
+    component: eic-api
+  namespace: __NPH_NAMESPACE
+spec:
+  selector:
+    cluster: management
+    component: eic-api
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 5500
+    targetPort: 5500
+    name: grpc
