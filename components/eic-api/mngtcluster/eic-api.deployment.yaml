@@ -40,7 +40,6 @@ spec:
         - "--debug"
         - "--inventoryManagerAddress=inventory-manager.__NPH_NAMESPACE:5510"
         - "--authHeader=authorization"
-        - "--authSecret=$(AUTH_SECRET)"
         - "--authConfigPath=/nalej/config/authx-config.json"
         - "--authxAddress=authx.__NPH_NAMESPACE:8810"
         securityContext:
