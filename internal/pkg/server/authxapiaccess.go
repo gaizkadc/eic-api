@@ -10,6 +10,7 @@ import (
 	"github.com/nalej/grpc-authx-go"
 	"github.com/nalej/grpc-utils/pkg/conversions"
 	"github.com/rs/zerolog/log"
+	"strings"
 	"time"
 )
 
@@ -30,10 +31,21 @@ func (aa *AuthxAPIAccess) Connect() derrors.Error {
 	return nil
 }
 
-func (aa *AuthxAPIAccess) IsValid(apiKey string) derrors.Error {
-	token := &grpc_authx_go.EICJoinToken{
-		Token: apiKey,
+// token has two field separated by '#'
+// the first one is the token and the second one is the organization_id
+// we need both to validate the token
+func (aa *AuthxAPIAccess) IsValid(tokenInfo string) derrors.Error {
+
+	splitToken := strings.Split(tokenInfo, "#")
+	if len(splitToken) != 2{
+		log.Warn().Str("tokenInfo", tokenInfo).Msg("cannot validate token. Error in token format")
+		return derrors.NewUnauthenticatedError("cannot validate token")
 	}
+	token := &grpc_authx_go.EICJoinRequest{
+		Token: splitToken[0],
+		OrganizationId: splitToken[1],
+	}
+	log.Debug().Interface("token", token).Msg("IsValid")
 	ctx, cancel := context.WithTimeout(context.Background(), AuthxTimeout)
 	defer cancel()
 	_, err := aa.authxClient.ValidEICJoinToken(ctx, token)

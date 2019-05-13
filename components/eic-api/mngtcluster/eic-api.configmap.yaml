@@ -11,6 +11,6 @@ data:
   authx-config.json: |
     {"allows_all":false,
      "permissions": {
-       "/eic_api.EIC/Join":{"must":["APIKEY"]},
-     }
+       "/eic_api.EIC/Join":{"must":["APIKEY"]}
+      }
     }
