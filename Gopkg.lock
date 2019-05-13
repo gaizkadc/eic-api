@@ -43,6 +43,7 @@
   version = "v1.0"
 
 [[projects]]
+  branch = "master"
   digest = "1:1e1800b6354ac0f6c22ada1f0fbc3f086a35bc5d591a88f3a3474c7357cf483b"
   name = "github.com/nalej/authx-interceptors"
   packages = [
@@ -51,7 +52,6 @@
   ]
   pruneopts = ""
   revision = "f6e10135723fef56bd95b181abdb3a0410cc3bd1"
-  version = "v0.1.0"
 
 [[projects]]
   digest = "1:0cc441f3dfe124dd74f44dd7e466dfc17cc7edff468094fbc3847a96b5ebf6f7"
@@ -70,12 +70,12 @@
   version = "v0.2.0"
 
 [[projects]]
-  digest = "1:e89a6f10b6a421e651ecf6f8a60c997025580a4fa29c20ce8d5eb6662382d1c5"
+  digest = "1:15537b88eb2389471ee6518ca1850c79783829a0189dd297bb54fe4f67821905"
   name = "github.com/nalej/grpc-authx-go"
   packages = ["."]
   pruneopts = ""
-  revision = "f6e5ce8ddada07ff2f802b64c004e6e760284cd5"
-  version = "v0.0.46"
+  revision = "c22d2e52e3a56547194a83901fdb7bb2acd08ea1"
+  version = "v0.0.48"
 
 [[projects]]
   digest = "1:44f7426538411ea9f774f96e3b102decc9f549b188e55e29ecc15be69542a96b"
