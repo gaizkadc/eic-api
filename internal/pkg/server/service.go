@@ -32,7 +32,7 @@ func NewService(conf config.Config) *Service {
 }
 
 type Clients struct {
-	imClient   grpc_inventory_manager_go.EICClient
+	imClient    grpc_inventory_manager_go.EICClient
 	authxClient grpc_authx_go.InventoryClient
 }
 
@@ -84,7 +84,7 @@ func (s *Service) Run() error {
 		interceptorConfig.NewConfig(authConfig, "not-used", s.Configuration.AuthHeader)))
 	grpc_eic_api_go.RegisterEICServer(grpcServer, handler)
 
-	if s.Configuration.Debug{
+	if s.Configuration.Debug {
 		log.Info().Msg("Enabling gRPC server reflection")
 		// Register reflection service on gRPC server.
 		reflection.Register(grpcServer)

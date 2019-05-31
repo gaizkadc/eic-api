@@ -12,27 +12,26 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-type Handler struct{
+type Handler struct {
 	manager Manager
 }
 
-func NewHandler(manager Manager) *Handler{
+func NewHandler(manager Manager) *Handler {
 	return &Handler{
-		manager:manager,
+		manager: manager,
 	}
 }
 
-func (h * Handler) Join(ctx context.Context, request *grpc_inventory_manager_go.EICJoinRequest) (*grpc_inventory_manager_go.EICJoinResponse, error) {
+func (h *Handler) Join(ctx context.Context, request *grpc_inventory_manager_go.EICJoinRequest) (*grpc_inventory_manager_go.EICJoinResponse, error) {
 	log.Debug().Str("organizationID", request.OrganizationId).Msg("join request")
 	verr := entities.ValidEICJoinRequest(request)
 	if verr != nil {
 		return nil, conversions.ToGRPCError(verr)
 	}
 	response, err := h.manager.Join(request)
-	if err != nil{
+	if err != nil {
 		return nil, err
 	}
 	log.Debug().Str("organization_id", response.OrganizationId).Str("edge_controller_id", response.EdgeControllerId).Msg("EIC has joined")
 	return response, nil
 }
-

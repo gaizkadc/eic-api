@@ -7,7 +7,7 @@ package config
 import (
 	interceptorConfig "github.com/nalej/authx-interceptors/pkg/interceptor/config"
 	"github.com/nalej/derrors"
-	"github.com/nalej/device-api/version"
+	"github.com/nalej/eic-api/version"
 	"github.com/rs/zerolog/log"
 )
 
@@ -25,7 +25,6 @@ type Config struct {
 	// AuthxAddress with the host:port to connect to the Authx manager.
 	AuthxAddress string
 }
-
 
 func (conf *Config) Validate() derrors.Error {
 
