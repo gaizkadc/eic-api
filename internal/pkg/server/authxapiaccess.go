@@ -21,9 +21,9 @@ type AuthxAPIAccess struct {
 	authxClient grpc_authx_go.InventoryClient
 }
 
-func NewAuthxAPIAccess(authxClient grpc_authx_go.InventoryClient) * AuthxAPIAccess{
+func NewAuthxAPIAccess(authxClient grpc_authx_go.InventoryClient) *AuthxAPIAccess {
 	return &AuthxAPIAccess{
-		authxClient:authxClient,
+		authxClient: authxClient,
 	}
 }
 
@@ -37,19 +37,19 @@ func (aa *AuthxAPIAccess) Connect() derrors.Error {
 func (aa *AuthxAPIAccess) IsValid(tokenInfo string) derrors.Error {
 
 	splitToken := strings.Split(tokenInfo, "#")
-	if len(splitToken) != 2{
+	if len(splitToken) != 2 {
 		log.Warn().Str("tokenInfo", tokenInfo).Msg("cannot validate token. Error in token format")
 		return derrors.NewUnauthenticatedError("cannot validate token")
 	}
 	token := &grpc_authx_go.EICJoinRequest{
-		Token: splitToken[0],
+		Token:          splitToken[0],
 		OrganizationId: splitToken[1],
 	}
 	log.Debug().Interface("token", token).Msg("IsValid")
 	ctx, cancel := context.WithTimeout(context.Background(), AuthxTimeout)
 	defer cancel()
 	_, err := aa.authxClient.ValidEICJoinToken(ctx, token)
-	if err != nil{
+	if err != nil {
 		derr := conversions.ToDerror(err)
 		log.Warn().Str("trace", derr.DebugReport()).Msg("cannot validate token")
 		return derrors.NewUnauthenticatedError("cannot validate token")

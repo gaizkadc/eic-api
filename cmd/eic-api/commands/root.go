@@ -18,9 +18,9 @@ var debugLevel bool
 var consoleLogging bool
 
 var rootCmd = &cobra.Command{
-	Use:   "eic-api",
-	Short: "EIC API",
-	Long:  `The API that allows new EIC to join the platform`,
+	Use:     "eic-api",
+	Short:   "EIC API",
+	Long:    `The API that allows new EIC to join the platform`,
 	Version: "unknown-version",
 
 	Run: func(cmd *cobra.Command, args []string) {
