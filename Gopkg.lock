@@ -118,12 +118,12 @@
   version = "v0.0.13"
 
 [[projects]]
-  digest = "1:ce6d99a147cc14352584e70b91a745e0293409989408828306249553c173392b"
+  digest = "1:b6e9b3363a472e453e196a67ed49a30a41f047e90da28856dbbd74b272d288e9"
   name = "github.com/nalej/grpc-inventory-manager-go"
   packages = ["."]
   pruneopts = ""
-  revision = "98f91cc5991523ed4174dbe4275b0076ae88c118"
-  version = "v0.0.28"
+  revision = "b6e865f5770a4700842df53189ef67c4c88bc558"
+  version = "v0.0.29"
 
 [[projects]]
   digest = "1:0e5100c2c9fcced5b1c0f2306742cbd44dd401cfc52a4b90678c02277fb44ac2"
