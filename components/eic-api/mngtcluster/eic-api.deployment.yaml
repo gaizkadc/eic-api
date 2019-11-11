@@ -37,7 +37,6 @@ spec:
           readOnly: true
         args:
         - "run"
-        - "--debug"
         - "--inventoryManagerAddress=inventory-manager.__NPH_NAMESPACE:5510"
         - "--authHeader=authorization"
         - "--authConfigPath=/nalej/config/authx-config.json"
