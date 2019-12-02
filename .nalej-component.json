@@ -8,6 +8,9 @@
   "image_list": [
     "eic-api"
   ],
+  "component_list": [
+    "eic-api"
+  ],
   "tools": [
     "k8s",
     "docker"
