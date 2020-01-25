@@ -1,15 +1,13 @@
 # eic-api
 
-Edge Controller API for Join operations
-
-The EIC-API receives calls from the EIC whenever a join operation needs to be executed.
+Edge Controller API for Join operations. The EIC-API receives calls from the EIC whenever a join operation needs to be executed.
 
 ## Getting Started
 
 ### Prerequisites
 
-* [inventory-manager](https://github.com/nalej/inventory-manager)
-* [authx](https://github.com/nalej/authx)
+* [`inventory-manager`](https://github.com/nalej/inventory-manager)
+* [`authx`](https://github.com/nalej/authx)
 
 ### Build and compile
 
@@ -19,8 +17,7 @@ In order to build and compile this repository use the provided Makefile:
 make all
 ```
 
-This operation generates the binaries for this repo, download dependencies,
-run existing tests and generate ready-to-deploy Kubernetes files.
+This operation generates the binaries for this repo, downloads the required dependencies, runs existing tests and generates ready-to-deploy Kubernetes files.
 
 ### Run tests
 
@@ -53,7 +50,7 @@ pull requests to us.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the
+We use [SemVer](http://semver.org/) for versioning. For the available versions, see the
 [tags on this repository](https://github.com/nalej/eic-api/tags). 
 
 ## Authors
